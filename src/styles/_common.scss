@@ -22,7 +22,12 @@ strong, b{ font-weight:  600 !important;}
   select { 
     @include setBoxShadow(); padding: 6px 14px; outline: none; min-width: 150px; color: $white;
     -webkit-appearance: none; -moz-appearance: none; appearance: none; position: relative;
-    option{ padding: 6px 14px; outline: none; color: var(--text-color);}
+    option{ 
+      padding: 6px 14px; outline: none; color:$grey_dark; background: $white;
+      &:hover{
+        background: $white; 
+      }
+    }
   }
 
 }

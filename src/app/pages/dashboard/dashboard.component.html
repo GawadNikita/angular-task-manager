@@ -25,7 +25,7 @@
               <td>
                 {{ticket.description}}
                 <div class="task-status-mobile text-right select-wrapper" >
-                  <select class="{{(ticket.status ==1 ) ? 'bg-green' : (ticket.status == 2) ? 'bg-blue' : 'bg-red'}} " (change)="updateStatus(ticket, tab.friendlyName)">
+                  <select class="{{(ticket.status ==1 ) ? 'bg-green' : (ticket.status == 2) ? 'bg-blue' : 'bg-red'}} " [(ngModel)]="ticket.status" (change)="updateStatus(ticket, tab.friendlyName)">
                     <option value="{{option.id}}" *ngFor="let option of status" selected="{{option.id}}">{{option.friendlyName}}</option>
                   </select>
                 </div>
