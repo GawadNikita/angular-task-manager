@@ -24,16 +24,18 @@
               <td><i class="fa fa-circle {{ticket.status == 1 ? 'text-green' :( ticket.status == 2 ?  'text-blue' : 'text-red')}}"></i></td>
               <td>
                 {{ticket.description}}
-                <div class="task-status-mobile text-right" >
+                <div class="task-status-mobile text-right select-wrapper" >
                   <select [(ngModel)]="ticket.status" (change)="updateStatus(ticket, tab.friendlyName)">
                     <option value="{{option.id}}" *ngFor="let option of status" selected="{{option.id}}">{{option.friendlyName}}</option>
                   </select>
                 </div>
               </td>
               <td class="task-status">
-                <select [(ngModel)]="ticket.status" (change)="updateStatus(ticket, tab.friendlyName)">
-                  <option value="{{option.id}}" *ngFor="let option of status" selected="{{option.id}}">{{option.friendlyName}}</option>
-                </select>
+                <div class="select-wrapper">
+                  <select [(ngModel)]="ticket.status" (change)="updateStatus(ticket, tab.friendlyName)">
+                    <option value="{{option.id}}" *ngFor="let option of status" selected="{{option.id}}">{{option.friendlyName}}</option>
+                  </select>
+                </div>
               </td>
             </tr>
           </tbody>

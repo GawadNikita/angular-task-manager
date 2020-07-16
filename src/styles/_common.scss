@@ -11,14 +11,17 @@ strong, b{ font-weight:  600 !important;}
 .text-red { color: $red;}
 .text-green { color: $green;}
 
-select { 
-  @include setBoxShadow(); padding: 6px 14px; outline: none; min-width: 150px;
-  -webkit-appearance: none; -moz-appearance: none; appearance: none; position: relative;
+.select-wrapper{
+  position: relative;
   &:after{
-    content: ""; position: absolute; top: 0; right: 0; width: 10px; height: 10px; display: block;
+    content: ""; position: absolute; top: 38%; right: 12px; display: block; width: 0;  height: 0;  border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid $grey_dark;
+  }
+  select { 
+    @include setBoxShadow(); padding: 6px 14px; outline: none; min-width: 150px;
+    -webkit-appearance: none; -moz-appearance: none; appearance: none; position: relative;
+    option{ padding: 6px 14px; outline: none; color: var(--text-color);}
   }
 
-  option{ padding: 6px 14px; outline: none; color: var(--text-color);}
 }
 
 .custom-tabs-style{
