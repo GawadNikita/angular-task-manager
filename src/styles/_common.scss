@@ -5,19 +5,22 @@ html, body{ font-family: $fontMontserrat !important; font-size: 14px;}
 .custom-container{ margin: 0 auto;}
 //classes for text apperance ::
 strong, b{ font-weight:  600 !important;}
+.text-grey{ color: $grey_dark; }
 .text-blue-dark{ color: $blue_dark;}
 .text-blue{ color: $blue; }
-.text-grey{ color: $grey_dark; }
 .text-red { color: $red;}
 .text-green { color: $green;}
+.bg-blue{ background: $blue; }
+.bg-red { background: $red;}
+.bg-green { background: $green;}
 
 .select-wrapper{
   position: relative;
   &:after{
-    content: ""; position: absolute; top: 38%; right: 12px; display: block; width: 0;  height: 0;  border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid $grey_dark;
+    content: ""; position: absolute; top: 38%; right: 12px; display: block; width: 0;  height: 0;  border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid $white;
   }
   select { 
-    @include setBoxShadow(); padding: 6px 14px; outline: none; min-width: 150px;
+    @include setBoxShadow(); padding: 6px 14px; outline: none; min-width: 150px; color: $white;
     -webkit-appearance: none; -moz-appearance: none; appearance: none; position: relative;
     option{ padding: 6px 14px; outline: none; color: var(--text-color);}
   }
@@ -33,9 +36,7 @@ strong, b{ font-weight:  600 !important;}
         &[aria-selected="true"]{ background: $blue_dark; color: $white; @include setBoxShadow(); }
       }
     }
-    i{ 
-      display: block; 
-      border: 1px solid $grey_light; border-radius: 100%; width: 50px; height: 50px; line-height: 50px; text-align: center; margin: 0 auto 8px; }
+    i{ display: block; font-size: 20px; border: 1px solid $grey_light; border-radius: 100%; width: 50px; height: 50px; line-height: 50px; text-align: center; margin: 0 auto 8px; }
   }
   .tab-content{
     .tab-title{ display: none;}
@@ -49,7 +50,12 @@ strong, b{ font-weight:  600 !important;}
         .page-link{color: $white; background: $blue_dark; border-color: $blue_dark;}
       }
     }
-    .page-link{ color: $grey_dark; border-color: $grey_medium;}
+    .page-link{ 
+      color: $grey_dark; border-color: $grey_medium;
+      &:focus{
+        box-shadow: none;
+      }
+    }
   }
 }
 @media screen and (min-width: 1200px){
