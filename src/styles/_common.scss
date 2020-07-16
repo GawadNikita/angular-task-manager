@@ -1,0 +1,86 @@
+@import './mixins';
+html, body{ font-family: $fontMontserrat !important; font-size: 14px;}
+.page-wrapper{ padding: 30px 15px;}
+*{ box-sizing: border-box;}
+.custom-container{ margin: 0 auto;}
+//classes for text apperance ::
+strong, b{ font-weight:  600 !important;}
+.text-blue-dark{ color: $blue_dark;}
+.text-blue{ color: $blue; }
+.text-grey{ color: $grey_dark; }
+.text-red { color: $red;}
+.text-green { color: $green;}
+
+select { 
+  @include setBoxShadow(); padding: 6px 14px; outline: none; min-width: 150px;
+  -webkit-appearance: none; -moz-appearance: none; appearance: none; position: relative;
+  &:after{
+    content: ""; position: absolute; top: 0; right: 0; width: 10px; height: 10px; display: block;
+  }
+
+  option{ padding: 6px 14px; outline: none; color: var(--text-color);}
+}
+
+.custom-tabs-style{
+  .nav-tabs{
+    border: none; justify-content: space-between !important;
+    li{
+      .nav-link{
+        color: $grey_dark; border: none; padding: 15px 25px; border-radius: 6px;
+        &[aria-selected="true"]{ background: $blue_dark; color: $white; @include setBoxShadow(); }
+      }
+    }
+    i{ 
+      display: block; 
+      border: 1px solid $grey_light; border-radius: 100%; width: 50px; height: 50px; line-height: 50px; text-align: center; margin: 0 auto 8px; }
+  }
+  .tab-content{
+    .tab-title{ display: none;}
+  }
+}
+
+.custom-pagination{
+  .pagination{
+    .page-item{
+      &.active{
+        .page-link{color: $white; background: $blue_dark; border-color: $blue_dark;}
+      }
+    }
+    .page-link{ color: $grey_dark; border-color: $grey_medium;}
+  }
+}
+@media screen and (min-width: 1200px){
+  .custom-container{max-width: 1030px;}
+} 
+
+@media screen and (max-width: 768px){
+  .custom-tabs-style{
+    .nav-tabs{
+      li{
+        .nav-link{
+          .tab-title{ display: none;}
+        }
+      }
+    }
+    .tab-content{
+      .tab-title{ display: block; margin: 20px 0 0;}
+    }
+  }
+}
+@media screen and (max-width: 640px){
+  .custom-tabs-style{
+    .nav-tabs{
+      li{
+        .nav-link{
+          padding: 13px;
+          i{ margin: 0 auto; width: 30px; height: 30px; line-height: 30px;}
+          .tab-title{ display: none;}
+        }
+      }
+    }
+    .tab-content{
+      .tab-title{ display: block; margin: 20px 0 0;}
+    }
+  }
+
+}

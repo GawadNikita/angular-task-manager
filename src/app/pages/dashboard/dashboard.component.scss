@@ -1,0 +1,20 @@
+@import '../../../styles/mixins';
+.dashboard-wrapper{
+  @include setBoxShadow(); padding:  30px 20px;
+  .task-list-table{
+    margin: 8px 0; text-align: justify;
+    .thead-dark{
+      th{ background: $blue_dark; border-color: $blue_dark;}
+    }
+  }
+  .task-status-mobile{ display: none;}
+}
+@media screen and (max-width: 736px){
+}
+
+@media screen and (max-width: 640px){
+  .task-list-table{
+    .task-status{ display: none;}
+    .task-status-mobile{ display: block; margin: 15px 0 15px;}
+  }
+}
