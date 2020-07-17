@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation} from '@angular/core';
 import * as userTasks from '../../../../db.json';
-
+import {Subject} from 'rxjs';
+import {debounceTime} from 'rxjs/operators';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -19,13 +20,21 @@ export class DashboardComponent implements OnInit {
   page = 1;
   pageSize = 10;
   tabEventData : any;
-  tabClass=['fa-list','fa-bug', 'fa-hourglass-end', 'fa-hourglass-half', 'fa-hourglass-start']
+  tabClass=['fa-list','fa-bug', 'fa-hourglass-end', 'fa-hourglass-half', 'fa-hourglass-start'];
+
+  successAlert = new Subject<string>();
+  staticAlertClosed = false;
+  successMessage = '';
   constructor() { }
 
   ngOnInit() {
-    console.log(userTasks)
     this.getCount(this.tickets);
     this.getActiveTab(this.activeTab);
+    setTimeout(() => this.staticAlertClosed = true, 20000);
+    this.successAlert.subscribe(message => this.successMessage = message);
+    this.successAlert.pipe(
+      debounceTime(5000)
+    ).subscribe(() => this.successMessage = '');
   }
   
   getCount = (arr) =>{
@@ -59,7 +68,6 @@ export class DashboardComponent implements OnInit {
         }
       })
     })
-    console.log("Output: ",this.tabNames)
   }
 
   getUserStatus = ()=>{
@@ -74,7 +82,6 @@ export class DashboardComponent implements OnInit {
     if(tabEvent){
       this.previousTab = tabEvent.activeId;
     }
-    console.log(tabName)
     this.result=[];
     if(tabName){
       this.getFilterByName(tabName);
@@ -115,6 +122,12 @@ export class DashboardComponent implements OnInit {
   }
   updateStatus = (ticket, tab) => {
     this.getCount(this.tickets);
-    this.getActiveTab(tab)
+    this.getActiveTab(tab);
+    this.showAlert();
+  }
+
+  showAlert = () =>{
+    this.successAlert.next("Ticket status changed successfully.")
+    
   }
 }

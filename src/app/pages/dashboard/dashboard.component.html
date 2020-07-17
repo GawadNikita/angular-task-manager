@@ -1,6 +1,5 @@
 <section class="custom-container dashboard-wrapper">
-  <app-user-info [userData]="user"></app-user-info>
-
+  <app-user-info [userData]="user"></app-user-info> 
   <ngb-tabset class="custom-tabs-style" #statusTabs activeId="{{activeTab}}" (tabChange)="getActiveTab($event.nextId, $event)">
     <ngb-tab *ngFor="let tab of tabNames" id="{{tab.friendlyName}}">
       <ng-template ngbTabTitle>
@@ -20,7 +19,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let ticket of result | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+            <tr *ngFor="let ticket of result | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;">
               <td><i class="fa fa-circle {{ticket.status == 1 ? 'text-green' :( ticket.status == 2 ?  'text-blue' : 'text-red')}}"></i></td>
               <td>
                 {{ticket.description}}
@@ -42,6 +41,7 @@
         </table>
         <ngb-pagination class="d-flex justify-content-end custom-pagination" [(page)]="page" [pageSize]="pageSize" [collectionSize]="result.length" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
 
+        <ngb-alert class="custom-alert" *ngIf="successMessage" type="success" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
       </ng-template>
     </ngb-tab>
 </ngb-tabset>

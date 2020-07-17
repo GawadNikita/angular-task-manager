@@ -1,0 +1,11 @@
+@import '../../../styles/mixins';
+header{
+  padding: 20px 15px; color: $white; background: $blue_dark; position: fixed; left: 0; right: 0; top: 0; z-index: 2;
+  .brand-name{ font-size: 22px; font-weight: 600; margin: 0; line-height: 1.4;}
+}
+
+@media screen and(max-width: 991px){
+  header{
+    padding-left: 70px;
+  }
+}

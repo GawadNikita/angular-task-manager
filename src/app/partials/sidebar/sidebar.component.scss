@@ -1,0 +1,62 @@
+@import '../../../styles/mixins';
+.sidebar{
+  background: $grey_light;  padding: 65px 0 20px; position: fixed; 
+  .navbar-nav{
+    list-style-type: none; margin: 0; padding: 0; width: 100%;
+    li{ 
+      padding: 5px 0;
+      a{
+        color: $blue_dark; outline: none; text-decoration: none; display: block; font-size: 16px; padding:12px; white-space: nowrap;
+        i{ font-size: 40px; line-height: 40px; vertical-align: middle;}
+        span{padding: 0 12px;}
+        &:hover{
+          background: $blue_dark; color: $white;
+        }
+      }
+    }
+  }
+  &:hover{
+    width: 100%;
+  }
+}
+@media (min-width: 992px){
+  .sidebar{
+    left: 0; top: 0; bottom: 0; width: 80px; z-index: 1;
+    .navbar-expand-lg{
+      padding: 0;
+      .navbar-nav {
+        flex-direction: column;
+        li{ 
+          a{
+            font-size: 16px; padding:12px;
+            i{ font-size: 40px; line-height: 40px; vertical-align: middle;}
+            span{display: none;}
+            &:hover{
+              span{ display: inline;}
+            }
+          }
+        }
+      }
+    }
+    &:hover{
+      width: 200px;
+      .navbar-nav{
+        li{
+          a{
+            span{ display: inline;}
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 991px){
+  .sidebar{
+     z-index: 2; top: 0; background: transparent; padding-top: 15px; left: 0; right: 0;
+    .navbar-toggler{color: $white; border-color: $white;}
+    .navbar-nav {
+      background: $white;  margin: 22px 0 10px;
+    }
+  }
+}

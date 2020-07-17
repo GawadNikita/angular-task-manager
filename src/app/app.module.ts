@@ -7,12 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { UserInfoComponent } from './partials/user-info/user-info.component';
+import { HeaderComponent } from './partials/header/header.component';
+import { SidebarComponent } from './partials/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    HeaderComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
